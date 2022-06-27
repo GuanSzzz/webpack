@@ -8,7 +8,7 @@ import $ from 'jquery'
 $('#swiper').css('background-color', 'red')
 
 // 引入css
-// import './style/index.css';
+import './style/index.css';
 
 // 引入less
 import './style/index.less';
@@ -21,3 +21,9 @@ document.body.appendChild(img);
 
 // 引入字体图标文件
 import './assets/fonts/iconfont.css'
+
+// 降级
+class App {
+    static a = 123
+}
+console.log(App.a)
