@@ -33,17 +33,43 @@ module.exports = {
     // 配置加载器 
     module: { // loader 加载器 配置在这儿
         rules: [ // loader的规则
-          {
-            // 匹配所有的css文件
-            test: /\.css$/, 
-            use: [ "style-loader", "css-loader"]
-          },
-          {
-              // 匹配所有的less文件
-            test: /\.less$/, 
-            use: [ "style-loader", "css-loader", 'less-loader']
-        },
-        
+            {
+                // 匹配所有的css文件
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"]
+            },
+            {
+                // 匹配所有的less文件
+                test: /\.less$/,
+                use: ["style-loader", "css-loader", 'less-loader']
+            },
+            {
+                // 图片文件的配置(仅适用于webpack5版本)
+                test: /\.(png|jpg|gif|jpeg)$/i,
+                type: 'asset',
+                generator: {
+                    filename: 'img/ font-[name].[hash:6][ext]'
+                },
+                parser: { // 解析器 规则
+                    dataUrlCondition: {
+                        maxSize: 2 * 1024,
+                    },
+                }
+            },
+            {
+                // 字体图标
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                type: 'asset',
+                generator: {
+                    filename: 'font-[name].[hash:6][ext]'
+                },
+                parser: { // 解析器 规则
+                    dataUrlCondition: {
+                        maxSize: 8 * 1024,
+                    },
+                }
+            },
+            
         ]
     }
 
