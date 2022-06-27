@@ -7,6 +7,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 // 3.引入自动删除
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+// 4.引入vue
+const { VueLoaderPlugin } = require('vue-loader')
+
 
 
 module.exports = {
@@ -18,6 +21,7 @@ module.exports = {
             filename: 'index.html'
         }),
         new CleanWebpackPlugin(),
+        new VueLoaderPlugin(),    //vue
     ],
     // 配置路径
     entry: './src/index.js',
@@ -79,6 +83,11 @@ module.exports = {
                         presets: ['@babel/preset-env'] // 预设:转码规则(用bable开发环境本来预设的)
                     }
                 }
+            },
+            {
+                // 配置vue
+                test: /\.vue$/,
+                loader: 'vue-loader'
             }
         ]
     }

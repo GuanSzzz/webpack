@@ -27,3 +27,7 @@ class App {
     static a = 123
 }
 console.log(App.a)
+
+// 引入vue
+import vue from './app.vue'
+
