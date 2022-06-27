@@ -29,6 +29,23 @@ module.exports = {
     devServer: {
         port: 3000, // 端口号
         open: true
+    },
+    // 配置加载器 
+    module: { // loader 加载器 配置在这儿
+        rules: [ // loader的规则
+          {
+            // 匹配所有的css文件
+            test: /\.css$/, 
+            use: [ "style-loader", "css-loader"]
+          },
+          {
+              // 匹配所有的less文件
+            test: /\.less$/, 
+            use: [ "style-loader", "css-loader", 'less-loader']
+        },
+        
+        ]
     }
+
 }
 
